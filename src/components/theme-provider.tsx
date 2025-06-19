@@ -37,7 +37,7 @@ export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   useEffect(() => {
     // Listen to system theme changes and update theme accordingly
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: Light)');
     const handleChange = (e: MediaQueryListEvent) => {
       setTheme(e.matches ? 'dark' : 'light');
     };

@@ -1,9 +1,9 @@
 // tailwind.config.js
 export const colors = {
   primary: {
-    light: '#FFD700', 
-    DEFAULT: '#FFC300',
-    dark: '#B8860B',
+    light: '#FF9A8B', 
+    DEFAULT: '#FF6F61',
+    dark: '#D94F45',
   },
   secondary: {
     light: '#FFD3B6',

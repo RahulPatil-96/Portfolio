@@ -248,7 +248,7 @@ function AppContent() {
         <AboutMe />
         <Education />
         <Experience />
-        <section className="py-20">
+        <section id="skills" className="py-20">
           <div className="container mx-auto max-w-6xl px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

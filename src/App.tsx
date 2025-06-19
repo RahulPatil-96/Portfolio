@@ -196,7 +196,7 @@ function AppContent() {
             >
               <ContactButton icon={<Github />} href="https://github.com/RahulPatil-96" label="GitHub" />
               <ContactButton icon={<Linkedin />} href="https://linkedin.com/in/rahul-patil-096k" label="LinkedIn" />
-              <ContactButton icon={<Mail />} href="mailto:rahulpatil096k.com" label="Email" />
+              <ContactButton icon={<Mail />} href="mailto:rahulpatil096k@gmail.com" label="Email" />
               <ContactButton icon={<LeetCodeIcon />} href="https://leetcode.com/u/rahulpatil096k/" label="LeetCode" />
               <ContactButton icon={<CredlyIcon />} href="https://www.credly.com/users/rahul-patil.fa68d5f4" label="Credly" />
               <ContactButton icon={<GoogleDevIcon />} href="https://developers.google.com/profile/u/rahulvijaypatil_jspmrscoe" label="Google for Developers" />
@@ -512,7 +512,7 @@ function AppContent() {
               <Linkedin className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="mailto:hello@example.com"
+              href="mailto:rahulpatil096k@gmail.com"
               className="hover:text-black dark:hover:text-white transition-colors"
               whileHover={{ scale: 1.2 }}
               aria-label="Email"

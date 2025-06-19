@@ -134,7 +134,7 @@ export const certifications = [
     issuer: "Google For Developer",
     date: "2024",
     image: cert3,
-    link: "hhttps://drive.google.com/file/d/12h9ZXiQgcRdbeKMOpQOz42kNqtAt3UZF/view?usp=sharing"
+    link: "https://drive.google.com/file/d/12h9ZXiQgcRdbeKMOpQOz42kNqtAt3UZF/view?usp=sharing"
   },
   {
     title: "Networt Security Associate",

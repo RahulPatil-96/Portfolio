@@ -492,7 +492,7 @@ function AppContent() {
           <p>© 2025 Rahul Patil. All rights reserved.</p>
           <div className="flex items-center gap-6 text-lg">
             <motion.a
-              href="https://github.com"
+              href="https://github.com/RahulPatil-96"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black dark:hover:text-white transition-colors"
@@ -502,7 +502,7 @@ function AppContent() {
               <Github className="w-6 h-6" />
             </motion.a>
             <motion.a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/rahul-patil-096k"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-black dark:hover:text-white transition-colors"

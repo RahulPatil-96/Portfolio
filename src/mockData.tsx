@@ -413,15 +413,15 @@ export const contactInfo = [
   {
     icon: <Mail size={24} />,
     label: 'Email',
-    value: 'rahulpatil096k.com',
-    href: 'mailto:rahulpatil096k.com',
+    value: 'rahulpatil096k@gmail.com',
+    href: 'mailto:rahulpatil096k@gmail.com',
     color: 'from-cyan-500 to-blue-500'
   },
   {
     icon: <Phone size={24} />,
     label: 'Phone',
-    value: '+1 (555) 123-4567',
-    href: 'tel:+15551234567',
+    value: '9322473877',
+    href: 'tel:9322473877',
     color: 'from-emerald-500 to-green-500'
   },
   {

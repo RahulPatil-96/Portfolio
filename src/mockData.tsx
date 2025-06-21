@@ -41,14 +41,16 @@ export interface Project {
 export const education = [
   {
     icon: 'Star',
-    title: "HSC (MSBSHSE)",
-    description: "M. M College, Pachora | Percentage: 81.33% | Year: 2022"
+    title: 'HSC (MSBSHSE)',
+    institute: 'M. M College, Pachora',
+    details: 'Percentage: 81.33% | Year: 2022',
   },
   {
     icon: 'Trophy',
-    title: "SSC (CBSE)",
-    description: "Nirmal International School, Pachora | Percentage: 79.80% | Year: 2020"
-  }
+    title: 'SSC (CBSE)',
+    institute: 'Nirmal International School, Pachora',
+    details: 'Percentage: 79.80% | Year: 2020',
+  },
 ];
 
 export const experiences = [

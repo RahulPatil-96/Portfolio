@@ -16,6 +16,10 @@ export const Certifications: React.FC = () => {
       className="py-24 relative overflow-hidden transition-colors duration-500"
       style={{ backgroundColor }}
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
+      </div>
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +27,7 @@ export const Certifications: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-4 mb-16">
-            <Award className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce"/>
+            <Award className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce" />
             <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
               Certifications
             </h2>

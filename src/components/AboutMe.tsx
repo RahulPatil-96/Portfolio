@@ -52,6 +52,10 @@ export const AboutMe: React.FC = () => {
       style={{ backgroundColor }}
       aria-labelledby="about-title"
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
+      </div>
       <div className="max-w-[1200px] mx-auto relative z-10">
         {/* Header */}
         <motion.header
@@ -113,7 +117,7 @@ export const AboutMe: React.FC = () => {
               </motion.div>
               <div className="mt-6 text-center text-3xl md:text-2xl font-bold text-text-light dark:text-text-dark tracking-tight drop-shadow-xl transform transition-transform duration-500 ease-in-out hover:scale-105 hover:text-primary-dark dark:hover:text-primary-dark">
                 Rahul Vijay Patil
-             </div>
+              </div>
             </div>
           </motion.div>
 

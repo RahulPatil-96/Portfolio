@@ -54,6 +54,10 @@ export const Testimonials: React.FC = () => {
       className="py-24 relative overflow-hidden transition-colors duration-500"
       style={{ backgroundColor }}
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
+      </div>
       <div className="container mx-auto max-w-6xl px-4 text-center">
         {/* Title */}
         <motion.div

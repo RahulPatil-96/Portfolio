@@ -36,25 +36,25 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-24 bg-background-light dark:bg-background-dark relative overflow-hidden transition-colors duration-500">
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
       </div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center gap-4 mb-16">
-            <MessageCircle className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce"/>
-            <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
-              Get In Touch
-            </h2>
-          </div>
+          <MessageCircle className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce" />
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
+            Get In Touch
+          </h2>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
               <h3 className="text-3xl font-bold text-neutral-900 dark:text-white mb-8">Let's Connect</h3>
-              
+
               <div className="space-y-6">
                 {contactInfo.map((info) => (
                   <div key={info.label} className="group relative">
@@ -112,7 +112,7 @@ const Contact = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 dark:from-indigo-900/10 dark:via-purple-900/10 dark:to-pink-900/10 rounded-3xl blur-2xl"></div>
             <div className="relative bg-white/80 dark:bg-black/60 backdrop-blur-sm rounded-2xl p-8 border border-white/50 dark:border-neutral-800 shadow-xl">
               <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-8">Send a Message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>

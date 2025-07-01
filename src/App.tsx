@@ -81,11 +81,10 @@ function AppContent() {
 
       {/* Navigation */}
       <nav
-        className={`fixed w-full z-40 transition-all duration-300 shadow-lg ${
-          isScrolled
+        className={`fixed w-full z-40 transition-all duration-300 shadow-lg ${isScrolled
             ? 'bg-white/70 dark:bg-background-dark/80 backdrop-blur-xl border-b border-gradient-to-r from-blue-400/30 via-purple-400/30 to-pink-400/30'
             : 'bg-transparent'
-        }`}
+          }`}
         style={{ boxShadow: isScrolled ? '0 8px 32px 0 rgba(31, 38, 135, 0.15)' : undefined }}
       >
         <div className="container mx-auto px-6 py-4 max-w-7xl">
@@ -93,17 +92,14 @@ function AppContent() {
             <div className="flex items-center justify-between px-4 py-2">
               <div className="group relative">
                 <div className="flex items-center space-x-4">
-                  {/* Glow Background on Hover */}
                   <div className="relative">
                     <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-pink-400/30 via-purple-400/30 to-blue-500/30 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
 
-                    {/* Icon Container with Pink-Blue Gradient */}
                     <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-xl flex items-center justify-center transform group-hover:rotate-[12deg] transition-transform duration-500 shadow-lg shadow-pink-500/30">
                       <CodeIcon size={22} className="text-white dark:text-white" />
                     </div>
                   </div>
 
-                  {/* Name with Pink-Blue Gradient Text */}
                   <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 via-purple-700 to-blue-600 dark:from-pink-400 dark:via-purple-500 dark:to-blue-400 bg-clip-text text-transparent transition-all duration-300 group-hover:tracking-wide">
                     Rahul Vijay Patil
                   </span>
@@ -134,17 +130,15 @@ function AppContent() {
                 aria-label="Toggle theme"
               >
                 <div className="relative w-5 h-5">
-                  <SunIcon 
-                    size={20} 
-                    className={`absolute inset-0 text-amber-500 transition-all duration-500 ${
-                      theme === 'light' ? 'opacity-100 rotate-0' : 'opacity-0 rotate-180'
-                    }`} 
+                  <SunIcon
+                    size={20}
+                    className={`absolute inset-0 text-amber-500 transition-all duration-500 ${theme === 'light' ? 'opacity-100 rotate-0' : 'opacity-0 rotate-180'
+                      }`}
                   />
-                  <MoonIcon 
-                    size={20} 
-                    className={`absolute inset-0 text-indigo-400 transition-all duration-500 ${
-                      theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
-                    }`} 
+                  <MoonIcon
+                    size={20}
+                    className={`absolute inset-0 text-indigo-400 transition-all duration-500 ${theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
+                      }`}
                   />
                 </div>
               </button>
@@ -166,6 +160,10 @@ function AppContent() {
 
       {/* Hero Section */}
       <header className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-6 pt-24">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
+        </div>
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-20">
           <div className="text-center max-w-4xl mx-auto">
             <div className="relative z-10 w-full flex flex-col items-center">

@@ -17,6 +17,10 @@ const ProjectsSection = () => {
       className="py-24 relative overflow-hidden transition-colors duration-500"
       style={{ backgroundColor }}
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Heading */}
         <div className="flex items-center gap-4 mb-16">
@@ -41,9 +45,8 @@ const ProjectsSection = () => {
             return (
               <div
                 key={project.title}
-                className={`group flex flex-col lg:flex-row ${
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                } gap-10 items-center`}
+                className={`group flex flex-col lg:flex-row ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                  } gap-10 items-center`}
               >
                 {/* Image */}
                 <div className="relative w-full lg:w-1/2">
@@ -84,16 +87,14 @@ const ProjectsSection = () => {
                 <div className="w-full lg:w-1/2 space-y-6">
                   <div>
                     <h3
-                      className={`text-3xl font-bold mb-4 ${
-                        theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'
-                      }`}
+                      className={`text-3xl font-bold mb-4 ${theme === 'dark' ? 'text-neutral-100' : 'text-neutral-900'
+                        }`}
                     >
                       {project.title}
                     </h3>
                     <p
-                      className={`text-lg leading-relaxed ${
-                        theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
-                      }`}
+                      className={`text-lg leading-relaxed ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-600'
+                        }`}
                     >
                       {project.description}
                     </p>
@@ -107,9 +108,8 @@ const ProjectsSection = () => {
                         return (
                           <div key={category}>
                             <h4
-                              className={`mb-2 font-semibold capitalize ${
-                                theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
-                              }`}
+                              className={`mb-2 font-semibold capitalize ${theme === 'dark' ? 'text-neutral-300' : 'text-neutral-700'
+                                }`}
                             >
                               {category}
                             </h4>
@@ -117,11 +117,10 @@ const ProjectsSection = () => {
                               {techs.map((tech: string) => (
                                 <span
                                   key={tech}
-                                  className={`px-4 py-2 rounded-xl text-sm transition-all duration-200 ${
-                                    theme === 'dark'
+                                  className={`px-4 py-2 rounded-xl text-sm transition-all duration-200 ${theme === 'dark'
                                       ? 'bg-neutral-700 text-neutral-200 hover:bg-neutral-600'
                                       : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
-                                  }`}
+                                    }`}
                                 >
                                   {tech}
                                 </span>
@@ -138,11 +137,10 @@ const ProjectsSection = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group/btn flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 ${
-                        theme === 'dark'
+                      className={`group/btn flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 ${theme === 'dark'
                           ? 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
                           : 'bg-neutral-900 text-white hover:bg-neutral-700'
-                      }`}
+                        }`}
                     >
                       <Github size={18} />
                       <span className="font-medium">View Code</span>

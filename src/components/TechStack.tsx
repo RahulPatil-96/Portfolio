@@ -21,16 +21,16 @@ const SkillCard: React.FC<SkillCardProps> = ({ icon, title, items, color }) => {
       <div
         className={`absolute -inset-1 bg-gradient-to-r ${color} rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-500`}
       />
-      
+
       <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-white/50 dark:border-slate-700/40 hover:shadow-xl transition-all duration-500 hover:scale-105 min-h-[250px] flex flex-col">
         {/* Icon and Title */}
         <div className="flex items-center mb-6">
           <div
             className={`p-4 rounded-xl bg-gradient-to-r ${color} bg-opacity-10 mr-4 group-hover:scale-110 transition-transform duration-300`}
           >
-           <div className={`text-3xl text-${color}`}>
-  {icon}
-</div>
+            <div className={`text-3xl text-${color}`}>
+              {icon}
+            </div>
 
           </div>
           <h3 className="text-xl font-bold text-neutral-900 dark:text-white">{title}</h3>
@@ -67,6 +67,10 @@ const TechStack: React.FC = () => {
       className="py-20 relative transition-colors duration-500"
       style={{ backgroundColor }}
     >
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-purple-200/30 to-pink-200/30 dark:from-purple-900/20 dark:to-pink-900/20 rounded-full blur-3xl"></div>
+      </div>
       <div className="container mx-auto max-w-6xl px-4">
         {/* Section Title */}
         <div className="flex items-center gap-4 mb-16">

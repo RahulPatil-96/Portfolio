@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTheme } from './theme-provider';
 import { colors } from '../colors';
 import { Camera } from 'lucide-react';
+import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
 
 interface Photo {
   src: string;
@@ -18,6 +20,9 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
   photos,
   autoPlayInterval = 5000,
 }) => {
+  const { theme } = useTheme();
+  const backgroundColor = getSectionBackground(theme, colors);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Use useCallback for memoization of nav handlers
@@ -56,7 +61,11 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
   const currentPhoto = photos[currentIndex];
 
   return (
-    <section className="py-20 relative transition-colors duration-500 ease-in-out bg-background-light dark:bg-background-dark text-primary-700 dark:text-primary-300">
+    <section
+      id="gallery"
+      className="py-24 relative overflow-hidden transition-colors duration-500"
+      style={{ backgroundColor }}
+    >
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,13 +74,8 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
         >
           {/* Header */}
           <div className="flex items-center gap-4 mb-16">
-            <Camera className="w-8 h-8 text-[#7f7fff] animate-bounce" />
-            <h2
-              className="text-4xl font-bold bg-clip-text text-transparent select-none drop-shadow-lg transition-transform duration-300 hover:scale-105"
-              style={{
-                backgroundImage: 'linear-gradient(to right, #7f7fff, #a78bfa)',
-              }}
-            >
+            <Camera className={sectionIconClass} />
+            <h2 className={sectionHeadingClass}>
               Photo Gallery
             </h2>
           </div>

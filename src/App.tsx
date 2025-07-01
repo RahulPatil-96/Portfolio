@@ -1,10 +1,8 @@
 import { useTheme } from './components/theme-provider';
 import { motion, useScroll } from 'framer-motion';
-import {
-  ChevronDown, Github, Linkedin, Mail, Code2, Rocket, Download, Sun, Moon, Send, ExternalLink
-} from 'lucide-react';
-import { ProjectCard } from './components/ProjectCard';
-import { TechStack } from './components/TechStack';
+import { ChevronDown, Github, Linkedin, Mail, Download, CodeIcon, MoonIcon, SunIcon } from 'lucide-react';
+import ProjectsSection from './components/Project.tsx';
+import TechStack from './components/TechStack';
 import { ContactButton } from './components/ContactButton';
 import { AboutMe } from './components/AboutMe';
 import { Education } from './components/Education';
@@ -12,9 +10,9 @@ import Experience from './components/Experience';
 import { Certifications } from './components/Certifications';
 import { Testimonials } from './components/Testimonials';
 import { PhotoGallery } from './components/PhotoGallery';
+import Contact from './components/Contact.tsx';
 import { useState, useEffect } from 'react';
-
-import { projects, allTechnologies, contactInfo, photoGallery } from './mockData';
+import { photoGallery } from './mockData';
 
 const LeetCodeIcon = () => (
   <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5" xmlns="http://www.w3.org/2000/svg">
@@ -41,26 +39,6 @@ function AppContent() {
   const { scrollYProgress } = useScroll();
   const { theme, toggleTheme } = useTheme();
 
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-  };
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -68,17 +46,6 @@ function AppContent() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const [selectedTech, setSelectedTech] = useState<string | null>(null);
-
-  const filteredProjects = selectedTech
-    ? projects.filter(project =>
-        project.technologies.frontend.includes(selectedTech!) ||
-        project.technologies.backend.includes(selectedTech!) ||
-        project.technologies.database.includes(selectedTech!) ||
-        project.technologies.deployment.includes(selectedTech!)
-      )
-    : projects;
 
   // New state and effect for floating blobs
   const [blob1Pos, setBlob1Pos] = useState({ x: 0, y: 0 });
@@ -114,47 +81,83 @@ function AppContent() {
 
       {/* Navigation */}
       <nav
-        className={`fixed w-full z-40 transition-all duration-300 ${
+        className={`fixed w-full z-40 transition-all duration-300 shadow-lg ${
           isScrolled
-            ? 'bg-gray-50/95 backdrop-blur-sm shadow-md dark:bg-background-dark/95'
+            ? 'bg-white/70 dark:bg-background-dark/80 backdrop-blur-xl border-b border-gradient-to-r from-blue-400/30 via-purple-400/30 to-pink-400/30'
             : 'bg-transparent'
         }`}
+        style={{ boxShadow: isScrolled ? '0 8px 32px 0 rgba(31, 38, 135, 0.15)' : undefined }}
       >
         <div className="container mx-auto px-6 py-4 max-w-7xl">
-          <div className="flex items-center justify-between">
-            <motion.a
-              href="#"
-              className="text-3xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Portfolio
-            </motion.a>
+          <div className="flex items-center justify-between px-4 py-2">
+            <div className="flex items-center justify-between px-4 py-2">
+              <div className="group relative">
+                <div className="flex items-center space-x-4">
+                  {/* Glow Background on Hover */}
+                  <div className="relative">
+                    <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-pink-400/30 via-purple-400/30 to-blue-500/30 blur-xl opacity-0 group-hover:opacity-100 transition duration-500" />
+
+                    {/* Icon Container with Pink-Blue Gradient */}
+                    <div className="relative z-10 w-12 h-12 bg-gradient-to-br from-pink-500 via-purple-600 to-blue-600 rounded-xl flex items-center justify-center transform group-hover:rotate-[12deg] transition-transform duration-500 shadow-lg shadow-pink-500/30">
+                      <CodeIcon size={22} className="text-white dark:text-white" />
+                    </div>
+                  </div>
+
+                  {/* Name with Pink-Blue Gradient Text */}
+                  <span className="text-2xl font-bold bg-gradient-to-r from-pink-600 via-purple-700 to-blue-600 dark:from-pink-400 dark:via-purple-500 dark:to-blue-400 bg-clip-text text-transparent transition-all duration-300 group-hover:tracking-wide">
+                    Rahul Vijay Patil
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <div className="hidden md:flex items-center gap-10 font-semibold text-lg">
-              <motion.a href="#about" className="hover:text-blue-600 dark:hover:text-violet-400 transition" whileHover={{ scale: 1.1 }}>About</motion.a>
-              <motion.a href="#experience" className="hover:text-blue-600 dark:hover:text-violet-400 transition" whileHover={{ scale: 1.1 }}>Experience</motion.a>
-              <motion.a href="#skills" className="hover:text-blue-600 dark:hover:text-violet-400 transition" whileHover={{ scale: 1.1 }}>Skills</motion.a>
-              <motion.a href="#projects" className="hover:text-blue-600 dark:hover:text-violet-400 transition" whileHover={{ scale: 1.1 }}>Projects</motion.a>
-              <motion.a href="#contact" className="hover:text-blue-600 dark:hover:text-violet-400 transition" whileHover={{ scale: 1.1 }}>Contact</motion.a>
+              {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="relative group transition"
+                  whileHover={{ scale: 1.13 }}
+                >
+                  <span className="hover:text-blue-600 dark:hover:text-violet-400 transition-colors duration-200">
+                    {item}
+                  </span>
+                  <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 rounded-full"></span>
+                </motion.a>
+              ))}
             </div>
             <div className="flex items-center gap-5">
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
-                aria-label="Toggle Theme"
-                className="p-2 rounded-full bg-blue-200 dark:bg-violet-700 hover:bg-blue-300 dark:hover:bg-violet-600 transition-colors"
+                className="p-2 rounded-xl bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-white/20 dark:border-white/10 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 group"
+                aria-label="Toggle theme"
               >
-                {theme === 'dark' ? <Sun className="w-6 h-6 text-yellow-400" /> : <Moon className="w-6 h-6 text-blue-900" />}
+                <div className="relative w-5 h-5">
+                  <SunIcon 
+                    size={20} 
+                    className={`absolute inset-0 text-amber-500 transition-all duration-500 ${
+                      theme === 'light' ? 'opacity-100 rotate-0' : 'opacity-0 rotate-180'
+                    }`} 
+                  />
+                  <MoonIcon 
+                    size={20} 
+                    className={`absolute inset-0 text-indigo-400 transition-all duration-500 ${
+                      theme === 'dark' ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-180'
+                    }`} 
+                  />
+                </div>
               </button>
               <motion.a
-                href="\rahul_patil.pdf"
+                href="/Rahul Patil.pdf"
                 download
-                className="hidden md:inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold shadow-lg hover:shadow-blue-500/40 transition duration-300"
-                whileHover={{ scale: 1.05 }}
+                aria-label="Download Rahul Patil's Resume"
+                className="hidden md:inline-flex items-center px-8 py-3 rounded-full font-bold shadow-xl hover:shadow-violet-400/40 transition duration-300 border-2 border-transparent hover:border-violet-400/70 focus:ring-4 focus:ring-violet-300 focus:outline-none animate-glow text-black dark:text-white"
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Download className="mr-2 w-5 h-5" />
-                Resume
+                <Download className="mr-3 w-6 h-6 text-black dark:text-white" aria-hidden="true" />
+                <span>Resume</span>
               </motion.a>
             </div>
           </div>
@@ -163,84 +166,88 @@ function AppContent() {
 
       {/* Hero Section */}
       <header className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-6 pt-24">
-        <div className="relative z-10 w-full flex flex-col items-center">
-          <div className="max-w-4xl text-center">
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-6xl md:text-8xl font-extrabold mb-6 leading-tight tracking-tight bg-clip-text text-transparent"
-              style={{
-                backgroundImage: 'linear-gradient(90deg, #FF61A6 10%, #3A86FF 40%, #FFBE0B 70%, #FB5607 100%)',
-                backgroundSize: "400% 400%",
-                animation: "gradient 5s ease infinite",
-                WebkitTextFillColor: "transparent"
-              }}
-            >
-              Full Stack Developer
-            </motion.h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-20">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="relative z-10 w-full flex flex-col items-center">
+              <div className="max-w-4xl text-center">
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="text-6xl md:text-8xl font-extrabold mb-6 leading-tight tracking-tight bg-clip-text text-transparent"
+                  style={{
+                    backgroundImage: 'linear-gradient(90deg, #FF61A6 10%, #3A86FF 40%, #FFBE0B 70%, #FB5607 100%)',
+                    backgroundSize: "400% 400%",
+                    animation: "gradient 5s ease infinite",
+                    WebkitTextFillColor: "transparent"
+                  }}
+                >
+                  Full Stack Developer
+                </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
-            >
-              Building scalable applications from frontend to backend
-            </motion.p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                  className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
+                >
+                  Building scalable applications from frontend to backend
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6, duration: 0.8 }}
+                  className="flex flex-wrap justify-center gap-5"
+                >
+                  <ContactButton icon={<Github />} href="https://github.com/RahulPatil-96" label="GitHub" />
+                  <ContactButton icon={<Linkedin />} href="https://linkedin.com/in/rahul-patil-096k" label="LinkedIn" />
+                  <ContactButton icon={<Mail />} href="mailto:rahulpatil096k@gmail.com" label="Email" />
+                  <ContactButton icon={<LeetCodeIcon />} href="https://leetcode.com/u/rahulpatil096k/" label="LeetCode" />
+                  <ContactButton icon={<CredlyIcon />} href="https://www.credly.com/users/rahul-patil.fa68d5f4" label="Credly" />
+                  <ContactButton icon={<GoogleDevIcon />} href="https://developers.google.com/profile/u/rahulvijaypatil_jspmrscoe" label="Google for Developers" />
+                </motion.div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 mb-16">
+                <a
+                  href="#projects"
+                  className="group relative px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-2xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-500 hover:scale-105"
+                >
+                  <span className="relative z-10">View My Work</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </a>
+                <a
+                  href="#contact"
+                  className="px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-2xl hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all duration-500 hover:scale-105"
+                >
+                  Let's Connect
+                </a>
+              </div>
+              <div className="animate-bounce">
+                <div className="mx-auto w-6 h-10 border-2 border-neutral-300 rounded-full flex justify-center">
+                  <div className="w-1 h-3 bg-gradient-to-b from-indigo-600 to-purple-600 rounded-full mt-2 animate-pulse"></div>
+                </div>
+                <ChevronDown className="text-neutral-400 mx-auto mt-2" size={20} />
+              </div>
+            </div>
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-wrap justify-center gap-5"
-            >
-              <ContactButton icon={<Github />} href="https://github.com/RahulPatil-96" label="GitHub" />
-              <ContactButton icon={<Linkedin />} href="https://linkedin.com/in/rahul-patil-096k" label="LinkedIn" />
-              <ContactButton icon={<Mail />} href="mailto:rahulpatil096k@gmail.com" label="Email" />
-              <ContactButton icon={<LeetCodeIcon />} href="https://leetcode.com/u/rahulpatil096k/" label="LeetCode" />
-              <ContactButton icon={<CredlyIcon />} href="https://www.credly.com/users/rahul-patil.fa68d5f4" label="Credly" />
-              <ContactButton icon={<GoogleDevIcon />} href="https://developers.google.com/profile/u/rahulvijaypatil_jspmrscoe" label="Google for Developers" />
-            </motion.div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 mb-16">
-            <a
-              href="#projects"
-              className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-lg 
-                        hover:from-cyan-600 hover:to-purple-600 transform hover:scale-105 transition-all duration-200 
-                        shadow-lg hover:shadow-xl"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-4 border-2 border-slate-600 text-black dark:text-white font-semibold rounded-lg 
-                        hover:border-cyan-400 hover:text-cyan-400 transition-all duration-200"
-            >
-              Get In Touch
-            </a>
-          </div>
-          <div className="animate-bounce">
-            <ChevronDown className="text-slate-400 mx-auto" size={32} />
+              className="absolute top-1/4 left-10 w-20 h-20 bg-cyan-500/30 rounded-full blur-xl animate-pulse"
+              animate={{ x: blob1Pos.x, y: blob1Pos.y }}
+              transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute top-1/3 right-10 w-32 h-32 bg-purple-500/30 rounded-full blur-xl animate-pulse"
+              style={{ animationDelay: '1s' }}
+              animate={{ x: blob2Pos.x, y: blob2Pos.y }}
+              transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            />
+            <motion.div
+              className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-emerald-500/30 rounded-full blur-xl animate-pulse"
+              style={{ animationDelay: '2s' }}
+              animate={{ x: blob3Pos.x, y: blob3Pos.y }}
+              transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
+            />
           </div>
         </div>
-        <motion.div
-          className="absolute top-1/4 left-10 w-20 h-20 bg-cyan-500/30 rounded-full blur-xl animate-pulse"
-          animate={{ x: blob1Pos.x, y: blob1Pos.y }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-1/3 right-10 w-32 h-32 bg-purple-500/30 rounded-full blur-xl animate-pulse"
-          style={{ animationDelay: '1s' }}
-          animate={{ x: blob2Pos.x, y: blob2Pos.y }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 1 }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-emerald-500/30 rounded-full blur-xl animate-pulse"
-          style={{ animationDelay: '2s' }}
-          animate={{ x: blob3Pos.x, y: blob3Pos.y }}
-          transition={{ duration: 3, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut', delay: 2 }}
-        />
-
       </header>
 
       {/* Main Content */}
@@ -248,278 +255,18 @@ function AppContent() {
         <AboutMe />
         <Education />
         <Experience />
-        <section id="skills" className="py-20">
-          <div className="container mx-auto max-w-6xl px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-center gap-4 mb-16">
-                <Code2 className="w-8 h-8 text-[#7f7fff] animate-bounce" />
-                <h2 className="text-4xl font-bold bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105" style={{ backgroundImage: 'linear-gradient(to right, #7f7fff, #a78bfa)' }}>
-                  Tech Stack
-                </h2>
-              </div>
-              <TechStack />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-20">
-          <div className="container mx-auto max-w-6xl px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-center gap-4 mb-16">
-                <Rocket className="w-8 h-8 text-[#7f7fff] animate-bounce" />
-                <h2 className="text-4xl font-bold bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105" style={{ backgroundImage: 'linear-gradient(to right, #7f7fff, #a78bfa)' }}>
-                  Featured Projects
-                </h2>
-              </div>
-              <div className="mb-8 flex flex-wrap gap-4 justify-center">
-                <button
-                  className={`px-5 py-3 rounded-full border-2 font-semibold transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-                    selectedTech === null ? 'bg-blue-600 text-white border-blue-600 shadow-lg' : 'bg-transparent text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white'
-                  }`}
-                  onClick={() => setSelectedTech(null)}
-                  aria-pressed={selectedTech === null}
-                >
-                  All
-                </button>
-                {allTechnologies.map((tech: string) => (
-                  <button
-                    key={tech}
-                    className={`px-5 py-3 rounded-full border-2 font-semibold transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-300 ${
-                      selectedTech === tech ? 'bg-blue-600 text-white border-blue-600 shadow-lg' : 'bg-transparent text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white'
-                    }`}
-                    onClick={() => setSelectedTech(tech)}
-                    aria-pressed={selectedTech === tech}
-                  >
-                    {tech}
-                  </button>
-                ))}
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {filteredProjects.map((project, index) => (
-                <ProjectCard key={index} {...project} icon={project.icon} color={project.color} />
-              ))}
-              </div>
-              <div className="text-center mt-12">
-                <a
-                  href="https://github.com/RahulPatil-96"
-                  className="inline-flex items-center space-x-2 px-6 py-3 border-2 border-slate-600 
-                             text-black dark:text-white font-semibold rounded-lg hover:border-cyan-400 hover:text-cyan-400 
-                             transition-all duration-200"
-                >
-                  <Github size={20} />
-                  <span>View All Projects</span>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Certifications Section */}
-        <section className="py-20">
-          <div className="container mx-auto max-w-6xl px-4">
-            <Certifications />
-            <div className="text-center mt-12">
-              <a
-                href="https://drive.google.com/drive/folders/1nMb_P5JZ0l2rLGEmIWYO5quWB_z5273P?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="View all certifications on Google Drive"
-                className="inline-flex items-center space-x-2 px-6 py-3 border-2 border-slate-600 
-                           text-black dark:text-white font-semibold rounded-lg hover:border-cyan-400 hover:text-cyan-400 
-                           transition-all duration-200"
-              >
-                <ExternalLink size={20} />
-                <span>View All Certifications</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
+        <TechStack />
+        <ProjectsSection />
+        <Certifications />
         <Testimonials />
-
-        {/* Photo Gallery Section */}
         <PhotoGallery photos={photoGallery} />
-
-        {/* Contact Section */}
-        <section id="contact" className="py-20 bg-gray-50 dark:bg-background-dark">
-          <div className="container mx-auto max-w-3xl px-4 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="inline-block p-2 bg-blue-500/20 rounded-full mb-8 animate-bounce">
-                <Mail className="w-8 h-8 text-blue-500 " />
-              </div>
-              <h2 className="text-4xl font-semibold text-gray-800 dark:text-gray-200 mb-8">Let's Build Something Amazing</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-12">
-                Looking for opportunities to create innovative solutions and collaborate on exciting projects.
-              </p>
-            </motion.div>
-          </div>
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Contact Information */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-8">Let's Connect</h3>
-                <div className="space-y-6 mb-8">
-                  {contactInfo.map((info) => (
-                    <a
-                      key={info.label}
-                      href={info.href}
-                      className="group flex items-center p-4 bg-gray-100 dark:bg-gray-800 rounded-xl 
-                                 border border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-600 
-                                 transition-all duration-300 hover:transform hover:scale-105"
-                    >
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${info.color} bg-opacity-20 mr-4`}>
-                        <div className="text-gray-800 dark:text-white">{info.icon}</div>
-                      </div>
-                      <div>
-                        <h4 className="text-gray-800 dark:text-white font-semibold">{info.label}</h4>
-                        <p className="text-gray-600 dark:text-gray-400 group-hover:text-cyan-400 transition-colors duration-200">
-                          {info.value}
-                        </p>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-              {/* Contact Form */}
-              <div>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 
-                                   rounded-lg text-gray-800 dark:text-white placeholder-gray-400 focus:border-cyan-400 
-                                   focus:outline-none transition-colors duration-200"
-                        placeholder="Your Name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 
-                                   rounded-lg text-gray-800 dark:text-white placeholder-gray-400 focus:border-cyan-400 
-                                   focus:outline-none transition-colors duration-200"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="subject" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 
-                                 rounded-lg text-gray-800 dark:text-white placeholder-gray-400 focus:border-cyan-400 
-                                 focus:outline-none transition-colors duration-200"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-gray-700 dark:text-gray-300 font-medium mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 
-                                 rounded-lg text-gray-800 dark:text-white placeholder-gray-400 focus:border-cyan-400 
-                                 focus:outline-none transition-colors duration-200 resize-none"
-                      placeholder="Tell me about your project..."
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-purple-500 text-white 
-                               font-semibold rounded-lg hover:from-cyan-600 hover:to-purple-600 
-                               transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl 
-                               flex items-center justify-center space-x-2"
-                  >
-                    <Send size={20} />
-                    <span>Send Message</span>
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Contact />
       </main>
+
       {/* Footer */}
       <footer className="py-12 bg-white/50 backdrop-blur-sm dark:bg-black/50">
         <div className="container mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-gray-600 dark:text-gray-400">
           <p>© 2025 Rahul Patil. All rights reserved.</p>
-          <div className="flex items-center gap-6 text-lg">
-            <motion.a
-              href="https://github.com/RahulPatil-96"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black dark:hover:text-white transition-colors"
-              whileHover={{ scale: 1.2 }}
-              aria-label="GitHub"
-            >
-              <Github className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href="https://linkedin.com/in/rahul-patil-096k"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-black dark:hover:text-white transition-colors"
-              whileHover={{ scale: 1.2 }}
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-6 h-6" />
-            </motion.a>
-            <motion.a
-              href="mailto:rahulpatil096k@gmail.com"
-              className="hover:text-black dark:hover:text-white transition-colors"
-              whileHover={{ scale: 1.2 }}
-              aria-label="Email"
-            >
-              <Mail className="w-6 h-6" />
-            </motion.a>
-          </div>
         </div>
       </footer>
     </div>

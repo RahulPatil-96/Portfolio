@@ -1,10 +1,59 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Star, Trophy } from 'lucide-react';
-import { EducationCard } from './EducationCard';
 import { education } from '../mockData';
+import { useTheme } from './theme-provider';
+import { colors } from '../colors';
+import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
+
+const EducationCard: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+  institute: string;
+  details: string;
+  delay?: number;
+}> = ({ icon, title, institute, details, delay = 0 }) => {
+  // Split details into parts like percentage, year, etc.
+  const parts = details.split(' | ');
+  const percentage = parts[0] || '';
+  const year = parts[1] || '';
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay }}
+      whileHover={{ scale: 1.02 }}
+      className="p-6 rounded-xl backdrop-blur-sm shadow-md transition-shadow duration-300 border border-gray-200 dark:border-gray-600 text-text-light dark:text-text-dark"
+    >
+      <div className="flex items-start gap-4">
+        <div className="p-2 rounded-lg bg-primary-light text-primary-dark">
+          {icon}
+        </div>
+        <div>
+          <h4 className="text-xl font-bold mb-1 text-text-light dark:text-text-dark">
+            {title}
+          </h4>
+          {institute && (
+            <p className="text-sm text-text-light dark:text-text-dark">
+              {institute}
+            </p>
+          )}
+          {(percentage || year) && (
+            <p className="text-sm text-primary-light dark:text-primary-dark">
+              {percentage} {percentage && year ? '|' : ''} {year}
+            </p>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export const Education: React.FC = () => {
+  const { theme } = useTheme();
+  const backgroundColor = getSectionBackground(theme, colors);
+
   const renderIcon = (iconName: string) => {
     switch (iconName) {
       case 'Star':
@@ -17,7 +66,11 @@ export const Education: React.FC = () => {
   };
 
   return (
-    <section className="py-20 relative transition-colors duration-500 ease-in-out bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+    <section
+      id="education"
+      className="py-24 relative overflow-hidden transition-colors duration-500"
+      style={{ backgroundColor }}
+    >
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,13 +79,8 @@ export const Education: React.FC = () => {
         >
           {/* Section Heading */}
           <div className="flex items-center gap-4 mb-16">
-            <GraduationCap className="w-8 h-8 text-[#7f7fff] animate-bounce" />
-            <h2
-              className="text-4xl font-bold bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105"
-              style={{
-                backgroundImage: 'linear-gradient(to right, #7f7fff, #a78bfa)',
-              }}
-            >
+            <GraduationCap className={sectionIconClass} />
+            <h2 className={sectionHeadingClass}>
               Education
             </h2>
           </div>

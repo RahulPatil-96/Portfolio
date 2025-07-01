@@ -1,4 +1,18 @@
 export interface Colors {
+  textGray400: any;
+  textGray600: any;
+  textWhite: any;
+  textGray900: any;
+  textPrimaryDark: any;
+  textPrimary: any;
+  textYellow400: any;
+  textYellow600: any;
+  fromPrimaryDark: any;
+  fromPrimary: any;
+  toAccentDark: any;
+  toAccent: any;
+  hoverShadowPrimaryDark40: any;
+  hoverShadowPrimary40: any;
   primary: {
     light: string;
     DEFAULT: string;

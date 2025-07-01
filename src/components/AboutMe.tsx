@@ -2,8 +2,11 @@ import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import {
-  BookOpen, Coffee, Heart, Music, Server, LayoutDashboard, TerminalSquare, GitMerge,
+  BookOpen, Coffee, Heart, Music, Server, LayoutDashboard, TerminalSquare, GitMerge, Brain
 } from 'lucide-react';
+import { useTheme } from './theme-provider';
+import { colors } from '../colors';
+import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
 
 const interestIcons = {
   frontend: <LayoutDashboard className="w-6 h-6 stroke-current" aria-hidden="true" />,
@@ -23,6 +26,8 @@ interface Interest {
 }
 
 export const AboutMe: React.FC = () => {
+  const { theme } = useTheme();
+  const backgroundColor = getSectionBackground(theme, colors);
   const [selectedInterest, setSelectedInterest] = useState<number | null>(null);
 
   const interests: Interest[] = [
@@ -43,7 +48,8 @@ export const AboutMe: React.FC = () => {
   return (
     <section
       id="about"
-      className="bg-background-light dark:bg-background-dark pt-20 pb-20 px-6 transition-colors duration-500 ease-in-out text-primary-700 dark:text-primary-300"
+      className="py-24 relative overflow-hidden transition-colors duration-500"
+      style={{ backgroundColor }}
       aria-labelledby="about-title"
     >
       <div className="max-w-[1200px] mx-auto relative z-10">
@@ -55,12 +61,15 @@ export const AboutMe: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2
-            id="about-title"
-            className="text-5xl md:text-6xl font-extrabold tracking-tight text-text-light dark:text-text-dark mb-6 drop-shadow-lg transition-transform duration-300 hover:scale-105"
-          >
-            About Me
-          </h2>
+          <div className="flex justify-center">
+            <h2
+              id="about-title"
+              className={`flex items-center gap-3 text-5xl md:text-6xl font-extrabold tracking-tight mb-6 drop-shadow-lg transition-transform duration-300 hover:scale-105 ${sectionHeadingClass}`}
+            >
+              <Brain size={40} className={sectionIconClass} />
+              About Me
+            </h2>
+          </div>
           <TypeAnimation
             sequence={[
               'I’m a full-stack developer focused on building modern, scalable web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js).',

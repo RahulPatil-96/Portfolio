@@ -2,6 +2,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { MessageSquare } from 'lucide-react';
 import { testimonials } from '../mockData';
+import { useTheme } from './theme-provider';
+import { colors } from '../colors';
+import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
 
 // Duplicate testimonials array for seamless looping
 const duplicatedTestimonials = [...testimonials, ...testimonials];
@@ -11,6 +14,8 @@ export const Testimonials: React.FC = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const [animationDistance, setAnimationDistance] = useState(0);
+  const { theme } = useTheme();
+  const backgroundColor = getSectionBackground(theme, colors);
 
   const calculateDistance = () => {
     if (contentRef.current && containerRef.current) {
@@ -44,24 +49,21 @@ export const Testimonials: React.FC = () => {
   }, [animationDistance, controls]);
 
   return (
-    <section id="testimonials" className="py-20 bg-background-light dark:bg-background-dark">
+    <section
+      id="testimonials"
+      className="py-24 relative overflow-hidden transition-colors duration-500"
+      style={{ backgroundColor }}
+    >
       <div className="container mx-auto max-w-6xl px-4 text-center">
         {/* Title */}
         <motion.div
           className="flex items-center justify-center gap-3 mb-12"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
         >
-          <MessageSquare className="w-8 h-8 text-[#7f7fff] animate-bounce" />
-          <h2
-            className="text-4xl font-bold bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105"
-            style={{
-              backgroundImage: 'linear-gradient(to right, #7f7fff, #a78bfa)',
-            }}
-          >
-            Testimonials
-          </h2>
+          <MessageSquare className={sectionIconClass} />
+          <h2 className={sectionHeadingClass}>Testimonials</h2>
         </motion.div>
 
         {/* Scrolling Testimonials */}

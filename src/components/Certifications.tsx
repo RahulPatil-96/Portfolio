@@ -1,13 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, ExternalLink } from 'lucide-react';
+import { useTheme } from './theme-provider';
 import { colors } from '../colors';
 import { certifications } from '../mockData';
+import { getSectionBackground } from '../sectionStyles';
 
 export const Certifications: React.FC = () => {
+  const { theme } = useTheme();
+  const backgroundColor = getSectionBackground(theme, colors);
+
   return (
     <section
-      className="relative transition-colors duration-500 ease-in-out bg-background-light dark:bg-background-dark text-primary-700 dark:text-primary-300"
+      id="certifications"
+      className="py-24 relative overflow-hidden transition-colors duration-500"
+      style={{ backgroundColor }}
     >
       <div className="container mx-auto px-4 max-w-5xl">
         <motion.div
@@ -16,13 +23,8 @@ export const Certifications: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="flex items-center gap-4 mb-16">
-            <Award className="w-8 h-8 text-[#7f7fff] animate-bounce" />
-            <h2
-              className="text-4xl font-bold bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105"
-                style={{
-                  backgroundImage: 'linear-gradient(to right, #7f7fff, #a78bfa)',
-                }}
-            >
+            <Award className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce"/>
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
               Certifications
             </h2>
           </div>
@@ -67,10 +69,10 @@ export const Certifications: React.FC = () => {
                   <p className="mb-4 text-gray-600 dark:text-gray-400">
                     {cert.issuer}
                   </p>
-                                    <div className="flex items-center justify-between ">
-                  <span className="text-sm text-gray-600 dark:text-gray-400">
-                    {cert.date}
-                  </span>
+                  <div className="flex items-center justify-between ">
+                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                      {cert.date}
+                    </span>
                     <motion.a
                       href={cert.link}
                       target="_blank"
@@ -87,6 +89,18 @@ export const Certifications: React.FC = () => {
               </motion.div>
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <a
+              href="https://github.com"
+              className="group relative inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-2xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-500 hover:scale-105"
+            >
+              <ExternalLink size={20} />
+              <span>View All Certifications</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-700 to-purple-700 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </a>
+          </div>
+
         </motion.div>
       </div>
     </section>

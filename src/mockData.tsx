@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Github, Cloud, Server, Package, Layers, Figma, Gift, Terminal, Database, Zap, Box, Monitor, ChevronDown, Rocket, Shield, Smartphone, Phone, MapPin, Globe, Mail, Code2 } from 'lucide-react';
+import { Code, Server, Terminal, Database, Zap, Cloud, Code2, Cpu, Globe, Github, Linkedin, Instagram } from 'lucide-react';
 import photo1 from '/photo1.jpg';
 import photo2 from '/photo2.jpg';
 import photo3 from '/photo3.jpg';
@@ -28,12 +28,13 @@ interface Technologies {
 }
 
 export interface Project {
+  stats: any;
   title: string;
   description: string;
   image: string;
   technologies: Technologies;
-  demoLink: string;
-  githubLink: string;
+  live: string;
+  github: string;
   icon: React.ReactNode;
   color: string;
 }
@@ -67,7 +68,8 @@ export const experiences = [
       'Received recognition from the Commissioner of Police for system efficiency'
     ],
     colorLight: 'from-rose-500 to-pink-500',
-    colorDark: 'from-rose-700 to-pink-700'
+    colorDark: 'from-rose-700 to-pink-700',
+    icon: <Server/>
   },
   {
     title: 'AI & ML Developer',
@@ -82,7 +84,8 @@ export const experiences = [
       'Developed a Streamlit dashboard for live data of 4+ intersections'
     ],
     colorLight: 'from-orange-500 to-yellow-500',
-    colorDark: 'from-orange-700 to-yellow-700'
+    colorDark: 'from-orange-700 to-yellow-700',
+    icon: <Terminal/>
   },
   {
     title: 'Full Stack Developer (Ongoing)',
@@ -97,7 +100,8 @@ export const experiences = [
       'Integrated modern responsive UI with Tailwind CSS and React'
     ],
     colorLight: 'from-emerald-500 to-teal-500',
-    colorDark: 'from-emerald-700 to-teal-700'
+    colorDark: 'from-emerald-700 to-teal-700',
+    icon: <Database/>
   },
   {
     title: 'Full Stack Developer (Ongoing)',
@@ -112,7 +116,8 @@ export const experiences = [
       'Designed UI for profile management and real-time notifications'
     ],
     colorLight: 'from-indigo-500 to-blue-500',
-    colorDark: 'from-indigo-700 to-blue-700'
+    colorDark: 'from-indigo-700 to-blue-700',
+    icon: <Zap/>
   }
 ];
 
@@ -175,28 +180,43 @@ export const certifications = [
   }
 ];
 
-
-export const ICONS = [
-  { icon: <Code size={25} color="#61dafb" />, label: 'React' },
-  { icon: <Github size={25} color="#000" />, label: 'GitHub' },
-  { icon: <Cloud size={25} color="#FF9900" />, label: 'AWS' },
-  { icon: <Server size={25} color="#34D399" />, label: 'Server' },
-  { icon: <Package size={25} color="#F7DF1E" />, label: 'NPM' },
-  { icon: <Layers size={25} color="#8B5CF6" />, label: 'Redux' },
-  { icon: <Figma size={25} color="#F24E1E" />, label: 'Figma' },
-  { icon: <Gift size={25} color="#F05032" />, label: 'Git' },
-  { icon: <Terminal size={25} color="#64748B" />, label: 'Bash' },
-  { icon: <Database size={25} color="#4ADE80" />, label: 'Database' },
-  { icon: <Zap size={25} color="#38B2AC" />, label: 'Tailwind' },
-  { icon: <Box size={25} color="#0EA5E9" />, label: 'Kubernetes' },
-  { icon: <Monitor size={25} color="#1E3A8A" />, label: 'VS Code' },
-  { icon: <ChevronDown size={25} color="#7f7fff" />, label: 'ChevronDown' },
-  { icon: <Rocket size={25} color="#7f7fff" />, label: 'Rocket' },
-  { icon: <Shield size={25} color="#34D399" />, label: 'Shield' },
-  { icon: <Smartphone size={25} color="#F24E1E" />, label: 'Smartphone' },
-  { icon: <Phone size={25} color="#F05032" />, label: 'Phone' },
-  { icon: <MapPin size={25} color="#64748B" />, label: 'MapPin' },
-  { icon: <Globe size={25} color="#4ADE80" />, label: 'Globe' },
+export const skillsData = [
+  {
+    title: "Frontend",
+    icon: <Code2 className="w-6 h-6" />,
+    color: 'from-cyan-500 to-blue-500',
+    items: ["JavaScript", "TypeScript", "React.js", "Tailwind CSS", "HTML", "CSS", "Electron.js"]
+  },
+  {
+    title: "Backend",
+    icon: <Server className="w-6 h-6" />,
+    color: 'from-emerald-500 to-green-500',
+    items: ["Node.js", "Nest.js", "Express", "Supabase"]
+  },
+  {
+    title: "Database",
+    icon: <Database className="w-6 h-6" />,
+    color: 'from-purple-500 to-violet-500',
+    items: ["SQL", "SQLite", "PostgreSQL", "MongoDB"]
+  },
+  {
+    title: "Cloud & DevOps",
+    icon: <Cloud className="w-6 h-6" />,
+    color: 'from-indigo-500 to-blue-500',
+    items: ["Supabase", "Docker", "AWS"]
+  },
+  {
+    title: "Concepts & Tools",
+    icon: <Globe className="w-6 h-6" />,
+    color: 'from-pink-500 to-rose-500',
+    items: ["Data Structures", "OOP (C++)", "Git", "GitHub", "VS Code", "Postman"]
+  },
+  {
+    title: "Languages",
+    icon: <Cpu className="w-6 h-6" />,
+    color: 'from-orange-500 to-red-500',
+    items: ["C", "C++", "Python"]
+  }
 ];
 
 export const allTechnologies: string[] = [
@@ -220,95 +240,116 @@ export const allTechnologies: string[] = [
 export const projects: Project[] = [
   {
     title: "Complaint Tracking System",
-    description: "Built an Electron.js desktop app used by 10+ officers to track 2,500+ complaints reducing paperwork by 50% and retrieval time by 40%. Received recognition from the Commissioner of Police for enhancing internal tracking processes.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&full=crop&q=80",
+    description:
+      "Built an Electron.js desktop app used by 10+ officers to track 2,500+ complaints reducing paperwork by 50% and retrieval time by 40%. Received recognition from the Commissioner of Police for enhancing internal tracking processes.",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&full=crop&q=80",
     technologies: {
       frontend: ["Electron.js", "JavaScript", "HTML", "CSS"],
       backend: ["Node.js"],
       database: ["SQLite"],
-      deployment: ["Pimpri Chinchwad Police Commissionerate"]
+      deployment: ["Pimpri Chinchwad Police Commissionerate"],
     },
-    demoLink: "#",
-    githubLink: "https://github.com/RahulPatil-96/Complaint_Management_Portal",
-    icon: <Zap size={20} />,
-    color: 'from-cyan-500 to-blue-500',
+    github: "https://github.com/RahulPatil-96/Complaint_Management_Portal",
+    live: "#",
+    color: "from-cyan-500 to-blue-500",
+    stats: { views: "12.4K", stars: "180", trend: "+10%" },
+    icon: <Server/>
   },
   {
     title: "Document Tracking System",
-    description: "Built an Electron.js desktop app used by 10+ officers to track 1,000+ documents, reducing paperwork by 50% and retrieval time by 40%. Received recognition from the Commissioner of Police for enhancing internal tracking processes.",
-    image: "https://plus.unsplash.com/premium_photo-1726079247028-181ca92a1195?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZGlnaXRhbCUyMGRvY3VtZW50c3xlbnwwfDB8MHx8fDA%3D?auto=format&full=crop&q=80",
+    description:
+      "Built an Electron.js desktop app used by 10+ officers to track 1,000+ documents, reducing paperwork by 50% and retrieval time by 40%. Received recognition from the Commissioner of Police for enhancing internal tracking processes.",
+    image:
+      "https://plus.unsplash.com/premium_photo-1726079247028-181ca92a1195?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZGlnaXRhbCUyMGRvY3VtZW50c3xlbnwwfDB8MHx8fDA%3D?auto=format&full=crop&q=80",
     technologies: {
       frontend: ["Electron.js", "JavaScript", "HTML", "CSS"],
       backend: ["Node.js"],
       database: ["SQLite"],
-      deployment: ["Pimpri Chinchwad Police Commissionerate", "JSPM’s Rajarshi Shahu College of Engineering"]
+      deployment: [
+        "Pimpri Chinchwad Police Commissionerate",
+        "JSPM’s Rajarshi Shahu College of Engineering",
+      ],
     },
-    demoLink: "#",
-    githubLink: "https://github.com/RahulPatil-96/Inward-Outward-Portal",
-    icon: <Server size={20} />,
-    color: 'from-rose-500 to-pink-500',
+    github: "https://github.com/RahulPatil-96/Inward-Outward-Portal",
+    live: "#",
+    color: "from-rose-500 to-pink-500",
+    stats: { views: "9.8K", stars: "150", trend: "+12%" },
+    icon: <Server/>
   },
   {
     title: "Real-time Smart Traffic Signal Management system",
-    description: "Achieved 85%+ vehicle detection accuracy and cut wait times by 30%. Streamlit dashboard monitored 4+ intersections with real-time traffic analytics.",
-    image: "https://img.freepik.com/free-photo/demographic-census-concept-representation_23-2149093905.jpg?auto=format&full=crop&q=80",
+    description:
+      "Achieved 85%+ vehicle detection accuracy and cut wait times by 30%. Streamlit dashboard monitored 4+ intersections with real-time traffic analytics.",
+    image:
+      "https://img.freepik.com/free-photo/demographic-census-concept-representation_23-2149093905.jpg?auto=format&full=crop&q=80",
     technologies: {
       frontend: ["Streamlit", "Plotly"],
       backend: ["Python"],
       database: [],
-      deployment: []
+      deployment: [],
     },
-    demoLink: "#",
-    githubLink: "https://github.com/RahulPatil-96/Traffic-Management",
-    icon: <Shield size={20} />,
-    color: 'from-emerald-500 to-green-500',
+    github: "https://github.com/RahulPatil-96/Traffic-Management",
+    live: "#",
+    color: "from-emerald-500 to-green-500",
+    stats: { views: "8.2K", stars: "120", trend: "+7%" },
+    icon: <Terminal/>
   },
   {
     title: "ERP for College",
-    description: "Creating a full-stack ERP platform for managing academics, workflows, and user roles. Developed REST APIs and integrated real-time sync and auth with Nest.js and Supabase.",
-    image: "https://img.freepik.com/free-vector/gradient-erp-illustration_23-2149373210.jpg?auto=format&full=crop&q=80",
+    description:
+      "Creating a full-stack ERP platform for managing academics, workflows, and user roles. Developed REST APIs and integrated real-time sync and auth with Nest.js and Supabase.",
+    image:
+      "https://img.freepik.com/free-vector/gradient-erp-illustration_23-2149373210.jpg?auto=format&full=crop&q=80",
     technologies: {
       frontend: ["React", "Tailwind CSS"],
       backend: ["Nest.js"],
       database: ["Supabase"],
-      deployment: []
+      deployment: [],
     },
-    demoLink: "#",
-    githubLink: "https://github.com/RahulPatil-96/ERP",
-    icon: <Smartphone size={20} />,
-    color: 'from-purple-500 to-violet-500',
+    github: "https://github.com/RahulPatil-96/ERP",
+    live: "#",
+    color: "from-purple-500 to-violet-500",
+    stats: { views: "10.6K", stars: "210", trend: "+11%" },
+    icon: <Database/>
   },
   {
     title: "Training and Placement Portal for College",
-    description: "Designing a role-based portal for students, recruiters, and admins with real-time updates. Built backend logic for profiles, job listings, and applications using Nest.js and Supabase.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&full=crop&q=80",
+    description:
+      "Designing a role-based portal for students, recruiters, and admins with real-time updates. Built backend logic for profiles, job listings, and applications using Nest.js and Supabase.",
+    image:
+      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&full=crop&q=80",
     technologies: {
       frontend: ["React", "Tailwind CSS"],
       backend: ["Nest.js"],
       database: ["Supabase"],
-      deployment: []
-    },
-    demoLink: "#",
-    githubLink: "https://github.com/RahulPatil-96/Training-and-placement-portal",
-    icon: <Code2 size={20} />,
-    color: 'from-indigo-500 to-blue-500',
-  },
-  {
-    title: 'Full Stack Paytm App',
-    description: 'A full stack app mimicking Paytm functionalities.',
-    image: 'https://img.freepik.com/free-vector/flat-design-minimal-technology-facebook-post_23-2149146031.jpg?auto=format&full=crop&q=80',
-    technologies: {
-      frontend: ['React', 'Tailwind CSS'],
-      backend: ['Node.js', 'Express'],
-      database: ['MongoDB'],
       deployment: [],
     },
-    demoLink: 'https://example.com/demo3',
-    githubLink: 'https://github.com/example/repo3',
-    icon: <Database size={20} />,
-    color: 'from-pink-500 to-rose-500',
-  }
+    github: "https://github.com/RahulPatil-96/Training-and-placement-portal",
+    live: "#",
+    color: "from-indigo-500 to-blue-500",
+    stats: { views: "11.1K", stars: "175", trend: "+9%" },
+    icon: <Zap/>
+  },
+  {
+    title: "Full Stack Paytm App",
+    description: "A full stack app mimicking Paytm functionalities.",
+    image:
+      "https://img.freepik.com/free-vector/flat-design-minimal-technology-facebook-post_23-2149146031.jpg?auto=format&full=crop&q=80",
+    technologies: {
+      frontend: ["React", "Tailwind CSS"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB"],
+      deployment: [],
+    },
+    github: "https://github.com/example/repo3",
+    live: "https://example.com/demo3",
+    color: "from-pink-500 to-rose-500",
+    stats: { views: "15.2K", stars: "312", trend: "+8%" },
+    icon: <Code/>
+  },
 ];
+
 
 export const testimonials = [
   {
@@ -413,24 +454,48 @@ export const photoGallery = [
 
 export const contactInfo = [
   {
-    icon: <Mail size={24} />,
+    icon: 'Mail',
     label: 'Email',
     value: 'rahulpatil096k@gmail.com',
     href: 'mailto:rahulpatil096k@gmail.com',
     color: 'from-cyan-500 to-blue-500'
   },
   {
-    icon: <Phone size={24} />,
+    icon: 'Phone',
     label: 'Phone',
     value: '9322473877',
     href: 'tel:9322473877',
     color: 'from-emerald-500 to-green-500'
   },
   {
-    icon: <MapPin size={24} />,
+    icon: 'MapPin',
     label: 'Location',
     value: 'Pune, Maharashtra, India',
     href: '#',
     color: 'from-purple-500 to-violet-500'
+  }
+];
+
+export const socialLinks = [
+  {
+    icon: <Github size={24} />, 
+    href: 'https://github.com/RahulPatil-96', 
+    label: 'GitHub',
+    color: 'hover:text-black hover:bg-neutral-200',
+    followers: '2.5K'
+  },
+  {
+    icon: <Linkedin size={24} />, 
+    href: 'https://linkedin.com/in/rahul-patil-096k', 
+    label: 'LinkedIn',
+    color: 'hover:bg-[#0077B5] hover:text-white',
+    followers: '5.2K'
+  },
+  {
+    icon: <Instagram size={24} />, 
+    href: 'https://twitter.com', 
+    label: 'Instagram',
+    color: 'hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-600 hover:text-white',
+    followers: '1.8K'
   }
 ];

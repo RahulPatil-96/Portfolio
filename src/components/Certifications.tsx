@@ -4,17 +4,15 @@ import { Award, ExternalLink } from 'lucide-react';
 import { useTheme } from './theme-provider';
 import { colors } from '../colors';
 import { certifications } from '../mockData';
-import { getSectionBackground } from '../sectionStyles';
 
 export const Certifications: React.FC = () => {
   const { theme } = useTheme();
-  const backgroundColor = getSectionBackground(theme, colors);
 
   return (
     <section
       id="certifications"
       className="py-24 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light, }}
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>

@@ -3,7 +3,6 @@ import { Calendar, MapPin, Briefcase, Award, Building } from 'lucide-react';
 import { useTheme } from './theme-provider';
 import { experiences } from '../mockData';
 import { colors } from '../colors';
-import { getSectionBackground } from '../sectionStyles';
 
 const Experience: React.FC = () => {
   const { theme } = useTheme();
@@ -14,13 +13,12 @@ const Experience: React.FC = () => {
   const textColorPrimary = theme === 'dark' ? colors.textWhite : colors.textGray900;
   const companyColor = theme === 'dark' ? colors.textPrimaryDark : colors.textPrimary;
   const awardColor = theme === 'dark' ? colors.textYellow400 : colors.textYellow600;
-  const backgroundColor = getSectionBackground(theme, colors);
 
   return (
     <section
       id="experience"
       className="py-24 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light }}
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
@@ -71,6 +69,11 @@ const Experience: React.FC = () => {
                           <MapPin size={14} className="mr-2" />
                           {exp.location}
                         </div>
+                        {exp.featured && (
+                          <div className="absolute -top-3 -right-3 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full">
+                            CURRENT
+                          </div>
+                        )}
                       </div>
                     </div>
 

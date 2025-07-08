@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from './theme-provider';
 import { colors } from '../colors';
 import { Camera } from 'lucide-react';
-import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
 
 interface Photo {
   src: string;
@@ -21,7 +20,6 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
   autoPlayInterval = 5000,
 }) => {
   const { theme } = useTheme();
-  const backgroundColor = getSectionBackground(theme, colors);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -64,7 +62,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
     <section
       id="gallery"
       className="py-24 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light, }}
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
@@ -78,8 +76,8 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({
         >
           {/* Header */}
           <div className="flex items-center gap-4 mb-16">
-            <Camera className={sectionIconClass} />
-            <h2 className={sectionHeadingClass}>
+            <Camera className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce" />
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
               Photo Gallery
             </h2>
           </div>

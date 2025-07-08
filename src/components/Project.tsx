@@ -3,19 +3,17 @@ import { projects as projectsData } from '../mockData';
 import { Project } from '../mockData';
 import { useTheme } from './theme-provider';
 import { colors } from '../colors';
-import { getSectionBackground } from '../sectionStyles';
 
 const projects: Project[] = projectsData;
 
 const ProjectsSection = () => {
   const { theme } = useTheme();
-  const backgroundColor = getSectionBackground(theme, colors);
 
   return (
     <section
       id="projects"
       className="py-24 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light }}
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
@@ -60,6 +58,11 @@ const ProjectsSection = () => {
                       className="w-full h-80 object-cover transition-all duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/20 to-transparent"></div>
+                    {project.featured && (
+                    <div className="absolute top-6 right-6 px-3 py-1 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full">
+                      FEATURED
+                    </div>
+                  )}
 
                     {/* Stats overlay */}
                     {project.stats && (
@@ -118,8 +121,8 @@ const ProjectsSection = () => {
                                 <span
                                   key={tech}
                                   className={`px-4 py-2 rounded-xl text-sm transition-all duration-200 ${theme === 'dark'
-                                      ? 'bg-neutral-700 text-neutral-200 hover:bg-neutral-600'
-                                      : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
+                                    ? 'bg-neutral-700 text-neutral-200 hover:bg-neutral-600'
+                                    : 'bg-neutral-100 text-neutral-700 hover:bg-neutral-200'
                                     }`}
                                 >
                                   {tech}
@@ -138,8 +141,8 @@ const ProjectsSection = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`group/btn flex items-center space-x-2 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 ${theme === 'dark'
-                          ? 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
-                          : 'bg-neutral-900 text-white hover:bg-neutral-700'
+                        ? 'bg-neutral-100 text-neutral-900 hover:bg-neutral-200'
+                        : 'bg-neutral-900 text-white hover:bg-neutral-700'
                         }`}
                     >
                       <Github size={18} />

@@ -4,7 +4,6 @@ import { MessageSquare } from 'lucide-react';
 import { testimonials } from '../mockData';
 import { useTheme } from './theme-provider';
 import { colors } from '../colors';
-import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
 
 // Duplicate testimonials array for seamless looping
 const duplicatedTestimonials = [...testimonials, ...testimonials];
@@ -15,7 +14,6 @@ export const Testimonials: React.FC = () => {
   const controls = useAnimation();
   const [animationDistance, setAnimationDistance] = useState(0);
   const { theme } = useTheme();
-  const backgroundColor = getSectionBackground(theme, colors);
 
   const calculateDistance = () => {
     if (contentRef.current && containerRef.current) {
@@ -52,7 +50,7 @@ export const Testimonials: React.FC = () => {
     <section
       id="testimonials"
       className="py-24 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light, }}
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
@@ -66,8 +64,10 @@ export const Testimonials: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <MessageSquare className={sectionIconClass} />
-          <h2 className={sectionHeadingClass}>Testimonials</h2>
+          <MessageSquare className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce" />
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
+            Testimonials
+          </h2>
         </motion.div>
 
         {/* Scrolling Testimonials */}

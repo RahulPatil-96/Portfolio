@@ -37,6 +37,7 @@ export interface Project {
   github: string;
   icon: React.ReactNode;
   color: string;
+  featured: boolean;
 }
 
 export const education = [
@@ -56,38 +57,6 @@ export const education = [
 
 export const experiences = [
   {
-    title: 'Full Stack Developer Intern',
-    company: 'Pimpri Chinchwad Police Commissionerate',
-    location: 'Pune, Maharashtra',
-    period: 'Oct 2024 – Jan 2025',
-    description:
-      'Developed an Electron.js-based complaint and document tracking system to streamline internal operations for the police department.',
-    achievements: [
-      'Reduced paperwork by 50% and document retrieval time by 40%',
-      'Used by 10+ officers to manage over 2,500 complaints and 1,000 documents',
-      'Received recognition from the Commissioner of Police for system efficiency'
-    ],
-    colorLight: 'from-rose-500 to-pink-500',
-    colorDark: 'from-rose-700 to-pink-700',
-    icon: <Server/>
-  },
-  {
-    title: 'AI & ML Developer',
-    company: 'Smart Traffic Signal Project (Academic)',
-    location: 'Pune, Maharashtra',
-    period: 'Jan 2025 – Mar 2025',
-    description:
-      'Built an intelligent traffic signal system using YOLOv8 and OpenCV, with real-time visualization and monitoring.',
-    achievements: [
-      'Achieved over 85% vehicle detection accuracy',
-      'Reduced intersection wait time by 30%',
-      'Developed a Streamlit dashboard for live data of 4+ intersections'
-    ],
-    colorLight: 'from-orange-500 to-yellow-500',
-    colorDark: 'from-orange-700 to-yellow-700',
-    icon: <Terminal/>
-  },
-  {
     title: 'Full Stack Developer (Ongoing)',
     company: 'ERP System for College (Academic)',
     location: 'Pune, Maharashtra',
@@ -101,7 +70,8 @@ export const experiences = [
     ],
     colorLight: 'from-emerald-500 to-teal-500',
     colorDark: 'from-emerald-700 to-teal-700',
-    icon: <Database/>
+    icon: <Database/>,
+    featured: true
   },
   {
     title: 'Full Stack Developer (Ongoing)',
@@ -117,8 +87,43 @@ export const experiences = [
     ],
     colorLight: 'from-indigo-500 to-blue-500',
     colorDark: 'from-indigo-700 to-blue-700',
-    icon: <Zap/>
-  }
+    icon: <Zap/>,
+    featured: true
+  },
+  {
+    title: 'AI & ML Developer',
+    company: 'Smart Traffic Signal Project (Academic)',
+    location: 'Pune, Maharashtra',
+    period: 'Jan 2025 – Mar 2025',
+    description:
+      'Built an intelligent traffic signal system using YOLOv8 and OpenCV, with real-time visualization and monitoring.',
+    achievements: [
+      'Achieved over 85% vehicle detection accuracy',
+      'Reduced intersection wait time by 30%',
+      'Developed a Streamlit dashboard for live data of 4+ intersections'
+    ],
+    colorLight: 'from-orange-500 to-yellow-500',
+    colorDark: 'from-orange-700 to-yellow-700',
+    icon: <Terminal/>,
+    featured: false
+  },
+  {
+    title: 'Full Stack Developer Intern',
+    company: 'Pimpri Chinchwad Police Commissionerate',
+    location: 'Pune, Maharashtra',
+    period: 'Oct 2024 – Jan 2025',
+    description:
+      'Developed an Electron.js-based complaint and document tracking system to streamline internal operations for the police department.',
+    achievements: [
+      'Reduced paperwork by 50% and document retrieval time by 40%',
+      'Used by 10+ officers to manage over 2,500 complaints and 1,000 documents',
+      'Received recognition from the Commissioner of Police for system efficiency'
+    ],
+    colorLight: 'from-rose-500 to-pink-500',
+    colorDark: 'from-rose-700 to-pink-700',
+    icon: <Server/>,
+    featured: false
+  },
 ];
 
 export const certifications = [
@@ -185,37 +190,70 @@ export const skillsData = [
     title: "Frontend",
     icon: <Code2 className="w-6 h-6" />,
     color: 'from-cyan-500 to-blue-500',
-    items: ["JavaScript", "TypeScript", "React.js", "Tailwind CSS", "HTML", "CSS", "Electron.js"]
+    items: [
+      { name: "JavaScript", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+      { name: "TypeScript", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+      { name: "React.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+      { name: "Tailwind CSS", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+      { name: "HTML", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+      { name: "CSS", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+      { name: "Electron.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg' }
+    ]
   },
   {
     title: "Backend",
     icon: <Server className="w-6 h-6" />,
     color: 'from-emerald-500 to-green-500',
-    items: ["Node.js", "Nest.js", "Express", "Supabase"]
+    items: [
+      { name: "Node.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+      { name: "Nest.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+      { name: "Express", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+      { name: "Supabase", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' }
+    ]
   },
   {
     title: "Database",
     icon: <Database className="w-6 h-6" />,
     color: 'from-purple-500 to-violet-500',
-    items: ["SQL", "SQLite", "PostgreSQL", "MongoDB"]
+    items: [
+      { name: "SQL", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+      { name: "SQLite", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg' },
+      { name: "PostgreSQL", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+      { name: "MongoDB", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' }
+    ]
   },
   {
     title: "Cloud & DevOps",
     icon: <Cloud className="w-6 h-6" />,
     color: 'from-indigo-500 to-blue-500',
-    items: ["Supabase", "Docker", "AWS"]
+    items: [
+      { name: "Supabase", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
+      { name: "Docker", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+      { name: "AWS", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' }
+    ]
   },
   {
     title: "Concepts & Tools",
     icon: <Globe className="w-6 h-6" />,
     color: 'from-pink-500 to-rose-500',
-    items: ["Data Structures", "OOP (C++)", "Git", "GitHub", "VS Code", "Postman"]
+    items: [
+      { name: "Data Structures", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+      { name: "OOP (C++)", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+      { name: "Git", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+      { name: "GitHub", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+      { name: "VS Code", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
+      { name: "Postman", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg' }
+    ]
   },
   {
     title: "Languages",
     icon: <Cpu className="w-6 h-6" />,
     color: 'from-orange-500 to-red-500',
-    items: ["C", "C++", "Python"]
+    items: [
+      { name: "C", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
+      { name: "C++", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
+      { name: "Python", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
+    ]
   }
 ];
 
@@ -254,7 +292,8 @@ export const projects: Project[] = [
     live: "#",
     color: "from-cyan-500 to-blue-500",
     stats: { views: "12.4K", stars: "180", trend: "+10%" },
-    icon: <Server/>
+    icon: <Server/>,
+    featured: true
   },
   {
     title: "Document Tracking System",
@@ -275,7 +314,8 @@ export const projects: Project[] = [
     live: "#",
     color: "from-rose-500 to-pink-500",
     stats: { views: "9.8K", stars: "150", trend: "+12%" },
-    icon: <Server/>
+    icon: <Server/>,
+    featured: true
   },
   {
     title: "Real-time Smart Traffic Signal Management system",
@@ -293,7 +333,8 @@ export const projects: Project[] = [
     live: "#",
     color: "from-emerald-500 to-green-500",
     stats: { views: "8.2K", stars: "120", trend: "+7%" },
-    icon: <Terminal/>
+    icon: <Terminal/>,
+    featured: false
   },
   {
     title: "ERP for College",
@@ -311,7 +352,8 @@ export const projects: Project[] = [
     live: "#",
     color: "from-purple-500 to-violet-500",
     stats: { views: "10.6K", stars: "210", trend: "+11%" },
-    icon: <Database/>
+    icon: <Database/>,
+    featured: false
   },
   {
     title: "Training and Placement Portal for College",
@@ -329,7 +371,8 @@ export const projects: Project[] = [
     live: "#",
     color: "from-indigo-500 to-blue-500",
     stats: { views: "11.1K", stars: "175", trend: "+9%" },
-    icon: <Zap/>
+    icon: <Zap/>,
+    featured: false
   },
   {
     title: "Full Stack Paytm App",
@@ -346,7 +389,8 @@ export const projects: Project[] = [
     live: "https://example.com/demo3",
     color: "from-pink-500 to-rose-500",
     stats: { views: "15.2K", stars: "312", trend: "+8%" },
-    icon: <Code/>
+    icon: <Code/>,
+    featured: false
   },
 ];
 

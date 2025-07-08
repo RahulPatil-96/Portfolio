@@ -4,7 +4,6 @@ import { GraduationCap, Star, Trophy } from 'lucide-react';
 import { education } from '../mockData';
 import { useTheme } from './theme-provider';
 import { colors } from '../colors';
-import { getSectionBackground, sectionHeadingClass, sectionIconClass } from '../sectionStyles';
 
 const EducationCard: React.FC<{
   icon: React.ReactNode;
@@ -52,7 +51,6 @@ const EducationCard: React.FC<{
 
 export const Education: React.FC = () => {
   const { theme } = useTheme();
-  const backgroundColor = getSectionBackground(theme, colors);
 
   const renderIcon = (iconName: string) => {
     switch (iconName) {
@@ -69,7 +67,7 @@ export const Education: React.FC = () => {
     <section
       id="education"
       className="py-24 relative overflow-hidden transition-colors duration-500"
-      style={{ backgroundColor }}
+      style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light }}
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-indigo-200/30 to-purple-300/30 dark:from-indigo-900/20 dark:to-purple-900/20 rounded-full blur-3xl"></div>
@@ -83,8 +81,8 @@ export const Education: React.FC = () => {
         >
           {/* Section Heading */}
           <div className="flex items-center gap-4 mb-16">
-            <GraduationCap className={sectionIconClass} />
-            <h2 className={sectionHeadingClass}>
+            <GraduationCap className="text-indigo-600 dark:text-pink-400 drop-shadow animate-bounce" />
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-lg transition-transform duration-300 hover:scale-105">
               Education
             </h2>
           </div>

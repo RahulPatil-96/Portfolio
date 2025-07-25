@@ -58,23 +58,6 @@ export const education = [
 export const experiences = [
   {
     title: 'Full Stack Developer (Ongoing)',
-    company: 'ERP System for College (Academic)',
-    location: 'Pune, Maharashtra',
-    period: 'Mar 2025 – Present',
-    description:
-      'Designing and developing a college ERP system for academic record management and internal workflows.',
-    achievements: [
-      'Implemented real-time synchronization using Supabase',
-      'Built secure authentication and scalable backend with Nest.js',
-      'Integrated modern responsive UI with Tailwind CSS and React'
-    ],
-    colorLight: 'from-emerald-500 to-teal-500',
-    colorDark: 'from-emerald-700 to-teal-700',
-    icon: <Database/>,
-    featured: true
-  },
-  {
-    title: 'Full Stack Developer (Ongoing)',
     company: 'Training & Placement Portal (Academic)',
     location: 'Pune, Maharashtra',
     period: 'May 2025 – Present',
@@ -87,7 +70,24 @@ export const experiences = [
     ],
     colorLight: 'from-indigo-500 to-blue-500',
     colorDark: 'from-indigo-700 to-blue-700',
-    icon: <Zap/>,
+    icon: <Zap />,
+    featured: true
+  }, 
+  {
+    title: 'Full Stack Developer (Ongoing)',
+    company: 'ERP System for College (Academic)',
+    location: 'Pune, Maharashtra',
+    period: 'Mar 2025 – Present',
+    description:
+      'Designing and developing a college ERP system for academic record management and internal workflows.',
+    achievements: [
+      'Implemented real-time synchronization using Supabase',
+      'Built secure authentication and scalable backend with Nest.js',
+      'Integrated modern responsive UI with Tailwind CSS and React'
+    ],
+    colorLight: 'from-emerald-500 to-teal-500',
+    colorDark: 'from-emerald-700 to-teal-700',
+    icon: <Database />,
     featured: true
   },
   {
@@ -104,7 +104,7 @@ export const experiences = [
     ],
     colorLight: 'from-orange-500 to-yellow-500',
     colorDark: 'from-orange-700 to-yellow-700',
-    icon: <Terminal/>,
+    icon: <Terminal />,
     featured: false
   },
   {
@@ -121,7 +121,7 @@ export const experiences = [
     ],
     colorLight: 'from-rose-500 to-pink-500',
     colorDark: 'from-rose-700 to-pink-700',
-    icon: <Server/>,
+    icon: <Server />,
     featured: false
   },
 ];
@@ -292,7 +292,7 @@ export const projects: Project[] = [
     live: "#",
     color: "from-cyan-500 to-blue-500",
     stats: { views: "12.4K", stars: "180", trend: "+10%" },
-    icon: <Server/>,
+    icon: <Server />,
     featured: true
   },
   {
@@ -314,7 +314,7 @@ export const projects: Project[] = [
     live: "#",
     color: "from-rose-500 to-pink-500",
     stats: { views: "9.8K", stars: "150", trend: "+12%" },
-    icon: <Server/>,
+    icon: <Server />,
     featured: true
   },
   {
@@ -333,7 +333,7 @@ export const projects: Project[] = [
     live: "#",
     color: "from-emerald-500 to-green-500",
     stats: { views: "8.2K", stars: "120", trend: "+7%" },
-    icon: <Terminal/>,
+    icon: <Terminal />,
     featured: false
   },
   {
@@ -352,7 +352,7 @@ export const projects: Project[] = [
     live: "#",
     color: "from-purple-500 to-violet-500",
     stats: { views: "10.6K", stars: "210", trend: "+11%" },
-    icon: <Database/>,
+    icon: <Database />,
     featured: false
   },
   {
@@ -371,7 +371,7 @@ export const projects: Project[] = [
     live: "#",
     color: "from-indigo-500 to-blue-500",
     stats: { views: "11.1K", stars: "175", trend: "+9%" },
-    icon: <Zap/>,
+    icon: <Zap />,
     featured: false
   },
   {
@@ -389,7 +389,7 @@ export const projects: Project[] = [
     live: "https://example.com/demo3",
     color: "from-pink-500 to-rose-500",
     stats: { views: "15.2K", stars: "312", trend: "+8%" },
-    icon: <Code/>,
+    icon: <Code />,
     featured: false
   },
 ];
@@ -522,22 +522,22 @@ export const contactInfo = [
 
 export const socialLinks = [
   {
-    icon: <Github size={24} />, 
-    href: 'https://github.com/RahulPatil-96', 
+    icon: <Github size={24} />,
+    href: 'https://github.com/RahulPatil-96',
     label: 'GitHub',
     color: 'hover:text-black hover:bg-neutral-200',
     followers: '2.5K'
   },
   {
-    icon: <Linkedin size={24} />, 
-    href: 'https://linkedin.com/in/rahul-patil-096k', 
+    icon: <Linkedin size={24} />,
+    href: 'https://linkedin.com/in/rahul-patil-096k',
     label: 'LinkedIn',
     color: 'hover:bg-[#0077B5] hover:text-white',
     followers: '5.2K'
   },
   {
-    icon: <Instagram size={24} />, 
-    href: 'https://twitter.com', 
+    icon: <Instagram size={24} />,
+    href: 'https://twitter.com',
     label: 'Instagram',
     color: 'hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-500 hover:to-purple-600 hover:text-white',
     followers: '1.8K'

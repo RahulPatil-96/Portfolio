@@ -124,7 +124,7 @@ const TechStack = () => {
 
   return (
     <section
-          id="experience"
+          id="skills"
           className="py-24 relative overflow-hidden transition-colors duration-500"
           style={{ backgroundColor: theme === 'dark' ? colors.background.dark : colors.background.light }}
         >

@@ -45,7 +45,7 @@ function AppContent() {
     boxShadow: isScrolled ? '0 8px 32px 0 rgba(31, 38, 135, 0.15)' : 'none',
   }}
 >
-  <div className="container mx-auto px-6 py-2 max-w-7xl"> {/* Reduced py-4 to py-2 */}
+  <div className="container mx-auto px-6 py-2 max-w-7xl">
     <div className="flex items-center justify-between px-4 py-2">
       <div className="group relative">
             <div className="flex items-center space-x-3">

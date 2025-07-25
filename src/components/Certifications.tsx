@@ -94,7 +94,7 @@ export const Certifications: React.FC = () => {
 
           <div className="text-center mt-12">
             <a
-              href="https://github.com"
+              href="https://drive.google.com/drive/folders/1nMb_P5JZ0l2rLGEmIWYO5quWB_z5273P?usp=sharing"
               className="group relative inline-flex items-center space-x-3 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-2xl hover:shadow-lg hover:shadow-indigo-500/25 transition-all duration-500 hover:scale-105"
             >
               <ExternalLink size={20} />

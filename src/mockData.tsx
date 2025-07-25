@@ -349,7 +349,7 @@ export const projects: Project[] = [
       deployment: [],
     },
     github: "https://github.com/RahulPatil-96/ERP",
-    live: "#",
+    live: "https://delta-edu-erp.vercel.app/",
     color: "from-purple-500 to-violet-500",
     stats: { views: "10.6K", stars: "210", trend: "+11%" },
     icon: <Database />,

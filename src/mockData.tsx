@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Server, Terminal, Database, Zap, Cloud, Code2, Cpu, Globe, Github, Linkedin, Instagram } from 'lucide-react';
+import { Code, Server, Terminal, Database, Zap, Github, Linkedin, Instagram } from 'lucide-react';
 import photo1 from '/photo1.jpg';
 import photo2 from '/photo2.jpg';
 import photo3 from '/photo3.jpg';
@@ -183,96 +183,6 @@ export const certifications = [
     image: cert8,
     link: "https://drive.google.com/file/d/1ViOHgs-lIDznG4MZA7viV8qcrOy24Ms0/view?usp=sharing"
   }
-];
-
-export const skillsData = [
-  {
-    title: "Frontend",
-    icon: <Code2 className="w-6 h-6" />,
-    color: 'from-cyan-500 to-blue-500',
-    items: [
-      { name: "JavaScript", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-      { name: "TypeScript", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
-      { name: "React.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: "Tailwind CSS", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
-      { name: "HTML", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-      { name: "CSS", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-      { name: "Electron.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/electron/electron-original.svg' }
-    ]
-  },
-  {
-    title: "Backend",
-    icon: <Server className="w-6 h-6" />,
-    color: 'from-emerald-500 to-green-500',
-    items: [
-      { name: "Node.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: "Nest.js", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
-      { name: "Express", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
-      { name: "Supabase", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' }
-    ]
-  },
-  {
-    title: "Database",
-    icon: <Database className="w-6 h-6" />,
-    color: 'from-purple-500 to-violet-500',
-    items: [
-      { name: "SQL", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-      { name: "SQLite", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg' },
-      { name: "PostgreSQL", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-      { name: "MongoDB", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' }
-    ]
-  },
-  {
-    title: "Cloud & DevOps",
-    icon: <Cloud className="w-6 h-6" />,
-    color: 'from-indigo-500 to-blue-500',
-    items: [
-      { name: "Supabase", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg' },
-      { name: "Docker", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-      { name: "AWS", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' }
-    ]
-  },
-  {
-    title: "Concepts & Tools",
-    icon: <Globe className="w-6 h-6" />,
-    color: 'from-pink-500 to-rose-500',
-    items: [
-      { name: "Data Structures", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-      { name: "OOP (C++)", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-      { name: "Git", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-      { name: "GitHub", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-      { name: "VS Code", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg' },
-      { name: "Postman", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg' }
-    ]
-  },
-  {
-    title: "Languages",
-    icon: <Cpu className="w-6 h-6" />,
-    color: 'from-orange-500 to-red-500',
-    items: [
-      { name: "C", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
-      { name: "C++", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg' },
-      { name: "Python", icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' }
-    ]
-  }
-];
-
-export const allTechnologies: string[] = [
-  "Electron.js",
-  "JavaScript",
-  "HTML",
-  "CSS",
-  "Node.js",
-  "SQLite",
-  "Streamlit",
-  "Plotly",
-  "Python",
-  "React",
-  "Tailwind CSS",
-  "Nest.js",
-  "Supabase",
-  "Express",
-  "MongoDB"
 ];
 
 export const projects: Project[] = [

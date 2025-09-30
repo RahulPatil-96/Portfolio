@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Server, Terminal, Database, Zap, Github, Linkedin, Instagram } from 'lucide-react';
+import { Code, Server, Terminal, Database, Zap, Github, Linkedin, Instagram, PackageSearch } from 'lucide-react';
 import photo1 from '/photo1.jpg';
 import photo2 from '/photo2.jpg';
 import photo3 from '/photo3.jpg';
@@ -57,25 +57,25 @@ export const education = [
 
 export const experiences = [
   {
-    title: 'Full Stack Developer (Ongoing)',
-    company: 'Training & Placement Portal (Academic)',
+    title: 'Full Stack Developer',
+    company: 'College Asset Management System',
     location: 'Pune, Maharashtra',
-    period: 'May 2025 – Present',
+    period: 'Jul 2025 – Present',
     description:
-      'Developing a portal to manage student placements, job listings, and recruiter interactions.',
+      'Developed a full-stack web application to manage lab assets, issues, transfers, and approvals within a college infrastructure.',
     achievements: [
-      'Built core logic for student-job matching system',
-      'Implemented backend APIs with Nest.js and Supabase',
-      'Designed UI for profile management and real-time notifications'
+      'Implemented role-based access control for 4 distinct user types (HOD, Lab Incharge, Assistant, Faculty)',
+      'Integrated real-time notifications and audit logging using Supabase and React',
+      'Built data export features (Excel/PDF) and dynamic analytics dashboards using Chart.js'
     ],
-    colorLight: 'from-indigo-500 to-blue-500',
-    colorDark: 'from-indigo-700 to-blue-700',
-    icon: <Zap />,
+    colorLight: 'from-emerald-500 to-lime-500',
+    colorDark: 'from-emerald-700 to-lime-700',
+    icon: <PackageSearch />,
     featured: true
-  }, 
+  },
   {
     title: 'Full Stack Developer (Ongoing)',
-    company: 'ERP System for College (Academic)',
+    company: 'ERP System for College',
     location: 'Pune, Maharashtra',
     period: 'Mar 2025 – Present',
     description:
@@ -89,6 +89,23 @@ export const experiences = [
     colorDark: 'from-emerald-700 to-teal-700',
     icon: <Database />,
     featured: true
+  },
+  {
+    title: 'Full Stack Developer (Ongoing)',
+    company: 'Training & Placement Portal',
+    location: 'Pune, Maharashtra',
+    period: 'May 2025 – Present',
+    description:
+      'Developing a portal to manage student placements, job listings, and recruiter interactions.',
+    achievements: [
+      'Built core logic for student-job matching system',
+      'Implemented backend APIs with Nest.js and Supabase',
+      'Designed UI for profile management and real-time notifications'
+    ],
+    colorLight: 'from-indigo-500 to-blue-500',
+    colorDark: 'from-indigo-700 to-blue-700',
+    icon: <Zap />,
+    featured: false
   },
   {
     title: 'AI & ML Developer',
@@ -187,6 +204,23 @@ export const certifications = [
 
 export const projects: Project[] = [
   {
+    title: "College Asset Management System",
+    description: "A comprehensive web-based Asset Management System for colleges to track and manage IT/lab equipment with role-based access control, automated workflows, and real-time notifications. Users can manage assets, track issues, and streamline lab operations.",
+    image: "https://t4.ftcdn.net/jpg/05/38/09/63/360_F_538096344_ctEQT3NWRkRQ4egteP2mrZH37Kl1GROM.jpg",
+    technologies: {
+      frontend: ["React 18", "TypeScript", "Tailwind CSS"],
+      backend: ["Supabase"],
+      database: ["PostgreSQL"],
+      deployment: ["JSPM’s Rajarshi Shahu College of Engineering"],
+    },
+    github: "https://github.com/RahulPatil-96/Assets-Management",
+    live: "https://assets-flow.vercel.app/",
+    color: "from-teal-500 to-amber-500",
+    stats: { views: "15K", stars: "220", trend: "+8%" },
+    icon: <Server />,
+    featured: true
+  },
+  {
     title: "Complaint Tracking System",
     description:
       "Built an Electron.js desktop app used by 10+ officers to track 2,500+ complaints reducing paperwork by 50% and retrieval time by 40%. Received recognition from the Commissioner of Police for enhancing internal tracking processes.",
@@ -210,7 +244,7 @@ export const projects: Project[] = [
     description:
       "Built an Electron.js desktop app used by 10+ officers to track 1,000+ documents, reducing paperwork by 50% and retrieval time by 40%. Received recognition from the Commissioner of Police for enhancing internal tracking processes.",
     image:
-      "https://plus.unsplash.com/premium_photo-1726079247028-181ca92a1195?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8ZGlnaXRhbCUyMGRvY3VtZW50c3xlbnwwfDB8MHx8fDA%3D?auto=format&full=crop&q=80",
+      "https://static.tnn.in/thumb/msid-90675265,thumbsize-35012,width-1280,height-720,resizemode-75/90675265.jpg?quality=100",
     technologies: {
       frontend: ["Electron.js", "JavaScript", "HTML", "CSS"],
       backend: ["Node.js"],
